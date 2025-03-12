@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.authen.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginWithGoogleHandler</servlet-name>
+        <servlet-class>controller.authen.LoginWithGoogleHandler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.authen.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginWithGoogleHandler</servlet-name>
+        <url-pattern>/loginwithgooglehandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logoutservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SendCodeToEmail3</servlet-name>
+        <servlet-class>controller.ForgotPassword.SendCodeToEmail3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendCodeToEmail3</servlet-name>
+        <url-pattern>/sendcodetoemail3</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>UserRegisterServlet</servlet-name>
+        <servlet-class>controller.Register.UserRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyUserRegisterServlet</servlet-name>
+        <servlet-class>controller.Register.VerifyUserRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResendEmailServlet</servlet-name>
+        <servlet-class>controller.Register.ResendEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserRegisterServlet</servlet-name>
+        <url-pattern>/userregisterservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyUserRegisterServlet</servlet-name>
+        <url-pattern>/verifyuserregisterservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResendEmailServlet</servlet-name>
+        <url-pattern>/resendemail</url-pattern>
+    </servlet-mapping>
+</web-app>
