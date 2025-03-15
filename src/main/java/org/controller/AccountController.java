@@ -30,7 +30,7 @@ public class AccountController extends HttpServlet {
         {
             request.getSession().setAttribute("account", acc);
 
-            response.sendRedirect(request.getContextPath()+"/home");
+            response.sendRedirect(request.getContextPath()+"/admin/ManageProduct");
         }
         else
         {
