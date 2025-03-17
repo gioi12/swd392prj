@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.dal.AccountDBContext;
+import org.dal.ProductDBContext;
 import org.entity.Account;
 
 import java.io.IOException;
@@ -22,23 +23,31 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user =  request.getParameter("user");
-        String pass =  request.getParameter("pass");
-        AccountDBContext accDB = new AccountDBContext();
-        Account acc = accDB.Login(user, pass);
-        if(acc.getUsername() != null)
-        {
-            request.getSession().setAttribute("account", acc);
+        try{
+            String user =  request.getParameter("user");
+            String pass =  request.getParameter("pass");
+            AccountDBContext accDB = new AccountDBContext();
+            Account acc = accDB.Login(user, pass);
+            if(acc.getUsername() != null)
+            {
+                ProductDBContext pdb = new ProductDBContext();
+                request.getSession().setAttribute("account", acc);
+                request.getSession().setAttribute("cart", pdb.getCart(acc.getId()));
 
-            response.sendRedirect(request.getContextPath()+"/admin/ManageProduct");
+                response.sendRedirect(request.getContextPath()+"/admin/ManageProduct");
+            }
+            else
+            {
+                response.getWriter().println("login failed!");
+            }
+
+            String url = this.getInitParameter("url");
+            response.getWriter().println(url);
         }
-        else
-        {
-            response.getWriter().println("login failed!");
+        catch (Exception e){
+            response.getWriter().println(e);
         }
 
-        String url = this.getInitParameter("url");
-        response.getWriter().println(url);
     }
 
     /**

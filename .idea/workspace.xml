@@ -10,23 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="862c4b51-0a74-4513-a6b5-a7b61b0f1722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/ManageProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/NewProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/UpdateProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/dal/ProductDBContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/entity/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/service/CloudinaryConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/ManageProduct.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/Navbar.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/NewProduct.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/UpdateProduct.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/AddToCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/ProductDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/entity/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/Home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/ProductDetail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ManageProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ManageProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/UpdateProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/UpdateProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dal/AccountDBContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dal/AccountDBContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dal/ProductDBContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dal/ProductDBContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/ManageProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/ManageProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/Navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/Navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/UpdateProduct.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,28 +66,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TomEE Server.TomEE 10.1.17.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.17.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TomEE Server.TomEE 10.1.17.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.17.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql_aurora_aws",
-      "sqlserver"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql_aurora_aws&quot;,
+      &quot;sqlserver&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tomcat 10.1.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.17" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
@@ -202,11 +201,21 @@
       <workItem from="1741188470305" duration="20000" />
       <workItem from="1741586464678" duration="1003000" />
       <workItem from="1741588591560" duration="9000" />
-      <workItem from="1742050404369" duration="10845000" />
+      <workItem from="1742050404369" duration="10944000" />
+      <workItem from="1742103327673" duration="15058000" />
+      <workItem from="1742191386768" duration="2858000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.dal.AccountDBContext" memberName="connection" />
+        <PinnedItemInfo parentTag="org.dal.ProductDBContext" memberName="connection" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
