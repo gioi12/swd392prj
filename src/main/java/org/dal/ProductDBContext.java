@@ -212,4 +212,38 @@ public class ProductDBContext extends DBContext{
         }
         return carts;
     }
+    public boolean findCart(int productId, int accountId) {
+        String sql = "Select * From Cart Where product_id = ? AND account_id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, productId);
+            stm.setInt(2, accountId);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+    public boolean updateCart(int productId, int accountId, int quantity) {
+        String sql = "UPDATE Cart SET quantity = ? WHERE product_id = ? AND account_id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, quantity);
+            stm.setInt(2, productId);
+            stm.setInt(3, accountId);
+            int i = stm.executeUpdate();
+            if(i > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
 }

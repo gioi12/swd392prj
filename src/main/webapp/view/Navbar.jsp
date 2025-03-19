@@ -84,9 +84,9 @@
             </c:if>
         </ul>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
             <c:choose>
-                <c:when test="${not empty sessionScope.account}">
+                <c:when test="${sessionScope.account != null}">
+
                     <ul class="navbar-nav ms-auto" style="margin-right: 10px">
                         <li class="nav-item">
                             <a href="#" id="cartIcon" class="nav-link position-relative">
@@ -95,6 +95,7 @@
                                         ${sessionScope.cart.size()}
                                 </span>
                             </a>
+
                             <div id="cartDropdown" class="cart-dropdown">
                                 <div class="cart-header d-flex justify-content-between">
                                     <strong>Your Cart</strong>
@@ -114,9 +115,9 @@
 
                                                     </div>
                                                     <div class="cart-actions">
-                                                        <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${item.product.id}, ${item.quantity},0)">-</button>
+                                                        <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${item.product.id},${item.product.quantity},0)">-</button>
                                                         <span id="qty-${item.product.id}">${item.quantity}</span>
-                                                        <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${item.product.id}, ${item.quantity},1)">+</button>
+                                                        <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${item.product.id},${item.product.quantity},1)">+</button>
                                                     </div>
                                                 </div>
                                             </c:forEach>
@@ -127,7 +128,7 @@
                                     </c:choose>
                                 </div>
                                 <div class="cart-footer">
-                                    <a href="${pageContext.request.contextPath}/cart" class="btn btn-primary btn-sm w-100">View Cart</a>
+                                    <a href="${pageContext.request.contextPath}/confirmOrder" class="btn btn-primary btn-sm w-100">View Cart</a>
                                 </div>
                             </div>
                         </li>
@@ -153,8 +154,6 @@
                         </li>
                     </c:otherwise>
                 </c:choose>
-            </ul>
-        </div>
     </div>
 </nav>
 
@@ -187,23 +186,27 @@
             }
         });
     });
-    function updateQuantity(id, currentQuantity, action) {
-        let newQuantity = action === 1 ? currentQuantity + 1 : Math.max(1, currentQuantity - 1);
+    function updateQuantity(id ,maxQuantity,action) {
+        let qtyElement = document.getElementById(`qty-`+id);                                 
+        let currentQuantity = Number(qtyElement.innerText);
+        let newQuantity = action === 1
+            ? Math.min(maxQuantity,parseInt(currentQuantity) + 1)
+            : Math.max(0, parseInt(currentQuantity)  - 1);
 
-        fetch('/updateQuantity', {
+        fetch('http://localhost:9999/OSS392/addCart', {
             method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: `id=${id}&quantity=${newQuantity}`
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id, quantity: newQuantity })
         })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    document.getElementById('qty-' + id).innerText = newQuantity;
+                    document.getElementById('qty-' + id).innerText = data.quantity;
                 } else {
-                    alert("Cập nhật thất bại!");
+                    alert("Cập nhật thất bại! Lý do: " + data.error);
                 }
             })
-            .catch(error => console.error("Lỗi: ", error));
+            .catch(error => console.error("Lỗi fetch: ", error));
     }
 
 </script>

@@ -4,7 +4,7 @@ public class Cart {
     private Product product;
     private Account account;
     private int quantity;
-
+    private Status status;
     public Product getProduct() {
         return product;
     }
@@ -27,5 +27,13 @@ public class Cart {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

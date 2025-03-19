@@ -34,7 +34,7 @@ public class AccountController extends HttpServlet {
                 request.getSession().setAttribute("account", acc);
                 request.getSession().setAttribute("cart", pdb.getCart(acc.getId()));
 
-                response.sendRedirect(request.getContextPath()+"/admin/ManageProduct");
+                response.sendRedirect(request.getContextPath()+"/home");
             }
             else
             {
