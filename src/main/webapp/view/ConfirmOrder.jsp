@@ -52,35 +52,35 @@
             </div>
 
 
-            <div class="mb-4">
-                <label class="block text-gray-700">City/Province</label>
-                <select id="city" class="w-full p-2 border border-gray-300 rounded mt-1">
-                    <option value="">Select a Province</option>
-                    <c:forEach var="province" items="${provinces}">
-                        <option value="${province.code}">${province.name}</option>
-                    </c:forEach>
-                </select>
-            </div>
+<%--            <div class="mb-4">--%>
+<%--                <label class="block text-gray-700">City/Province</label>--%>
+<%--                <select id="city" class="w-full p-2 border border-gray-300 rounded mt-1">--%>
+<%--                    <option value="">Select a Province</option>--%>
+<%--                    <c:forEach var="province" items="${provinces}">--%>
+<%--                        <option value="${province.code}">${province.name}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </select>--%>
+<%--            </div>--%>
 
 
-            <div class="mb-4">
-                <label class="block text-gray-700">District</label>
-                <select id="district" class="w-full p-2 border border-gray-300 rounded mt-1">
-                    <option value="">Select a District</option>
-                    <c:forEach var="province" items="${districts}">
-                        <option value="${province.code}">${province.name}</option>
-                    </c:forEach>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700">Ward</label>
-                <select id="ward" class="w-full p-2 border border-gray-300 rounded mt-1">
-                    <option value="">Select a Ward</option>
-                    <c:forEach var="province" items="${wards}">
-                        <option value="${province.code}">${province.name}</option>
-                    </c:forEach>
-                </select>
-            </div>
+<%--            <div class="mb-4">--%>
+<%--                <label class="block text-gray-700">District</label>--%>
+<%--                <select id="district" class="w-full p-2 border border-gray-300 rounded mt-1">--%>
+<%--                    <option value="">Select a District</option>--%>
+<%--                    <c:forEach var="province" items="${districts}">--%>
+<%--                        <option value="${province.code}">${province.name}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--            <div class="mb-4">--%>
+<%--                <label class="block text-gray-700">Ward</label>--%>
+<%--                <select id="ward" class="w-full p-2 border border-gray-300 rounded mt-1">--%>
+<%--                    <option value="">Select a Ward</option>--%>
+<%--                    <c:forEach var="province" items="${wards}">--%>
+<%--                        <option value="${province.code}">${province.name}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </select>--%>
+<%--            </div>--%>
 
         </form>
     </div>
