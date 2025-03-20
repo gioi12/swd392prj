@@ -168,13 +168,15 @@ public class ProductDBContext extends DBContext{
         return false;
     }
     public boolean addCart(int productId, int accountId, int quantity) {
-        String sql = "INSERT INTO Cart (product_id, account_id, quantity) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Cart (product_id, account_id, quantity,status_id) VALUES (?, ?, ?,?)";
         PreparedStatement stm = null;
         try {
             stm = connection.prepareStatement(sql);
             stm.setInt(1, productId);
             stm.setInt(2, accountId);
             stm.setInt(3, quantity);
+            stm.setInt(4, 1);
+
             int i = stm.executeUpdate();
             if(i > 0) {
                 return true;
