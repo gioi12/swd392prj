@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.dal.CartDBContext;
+import org.dal.OrderDBContext;
 import org.dal.ProductDBContext;
 import org.entity.*;
 
@@ -69,6 +70,25 @@ public class ConfirmOrderController extends BaseRequiredAuthenticationController
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
-
+        String province = req.getParameter("province");
+        String district = req.getParameter("district");
+        String ward = req.getParameter("ward");
+        String name = req.getParameter("name");
+        String phone = req.getParameter("phone");
+        String email = req.getParameter("email");
+        String payment = req.getParameter("payment");
+        try{
+            boolean pay = false;
+            if(payment.equals("online"))
+            {pay = true;}
+            OrderDBContext odb = new OrderDBContext();
+            int orderId = odb.addOrder(account.getId(), name, phone, email, district, province, ward,pay);
+            CartDBContext cdb = new CartDBContext();
+            cdb.updateStatusCartAndOrder(account.getId(), orderId);
+            resp.getWriter().println("Oder checkout");
+        }
+        catch (Exception e){
+            resp.getWriter().println(e);
+        }
     }
 }

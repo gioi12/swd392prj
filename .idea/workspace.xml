@@ -9,7 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="862c4b51-0a74-4513-a6b5-a7b61b0f1722" name="Changes" comment="" />
+    <list default="true" id="862c4b51-0a74-4513-a6b5-a7b61b0f1722" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ConfirmOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ConfirmOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dal/CartDBContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dal/CartDBContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dal/OrderDBContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dal/OrderDBContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dal/ProductDBContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dal/ProductDBContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/entity/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/ConfirmOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/ConfirmOrder.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/ProductDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/ProductDetail.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -201,7 +211,7 @@
       <workItem from="1742387807213" duration="155000" />
       <workItem from="1742406138879" duration="1231000" />
       <workItem from="1742435122391" duration="19000" />
-      <workItem from="1742471520882" duration="310000" />
+      <workItem from="1742471520882" duration="7135000" />
     </task>
     <servers />
   </component>

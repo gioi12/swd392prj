@@ -187,7 +187,7 @@ public class ProductDBContext extends DBContext{
         return false;
     }
     public ArrayList<Cart> getCart(int accountId) {
-        String sql = "Select p.id AS product_id, p.name, p.price, p.image_url, c.account_id, c.quantity,p.quantity AS productQuantity From Cart c JOIN Product p ON c.product_id = p.id Where account_id = ?";
+        String sql = "Select p.id AS product_id, p.name, p.price, p.image_url, c.account_id, c.quantity,p.quantity AS productQuantity From Cart c JOIN Product p ON c.product_id = p.id Where account_id = ? AND c.status_id = 1";
         ArrayList<Cart> carts = new ArrayList<>();
         PreparedStatement stm = null;
         try {

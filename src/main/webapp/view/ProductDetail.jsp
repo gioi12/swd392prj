@@ -48,14 +48,26 @@
                             </button>
                         </div>
                     </div>
+                    <c:set var="exists" value="false" />
+                    <c:forEach var="item" items="${sessionScope.cart}">
+                        <c:if test="${item.product.id == param.id}">
+                            <c:set var="exists" value="true" />
+                        </c:if>
+                    </c:forEach>
+
 
                     <div class="flex items-center mt-6 space-x-4">
-                        <button id="addToCartBtn" class="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
-                            Add to Cart
-                        </button>
-                        <button id="buyNowBtn" class="px-8 py-2 bg-orange-500 text-white text-sm font-medium rounded hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
-                            Buy Now
-                        </button>
+                        <c:if test="${exists}">
+                            <p class="text-red-600 font-semibold bg-red-100 border border-red-400 p-2 rounded-md">
+                                🔴 Sản phẩm đã có trong giỏ hàng!
+                            </p>
+                        </c:if>
+                        <c:if test="${!exists}">
+                            <button id="addToCartBtn" class="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                                Add to Cart
+                            </button>
+                        </c:if>
+
                     </div>
                 </c:if>
 
@@ -72,7 +84,7 @@
             <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <c:forEach var="p" items="${relatedProducts}">
                     <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden bg-white hover:shadow-lg transition"
-                         style="cursor: pointer" onclick="location.href='/productDetail?id=${p.id}'">
+                         style="cursor: pointer" onclick="location.href='/OSS392/product-detail?id=${p.id}'">
                         <div class="flex items-end justify-end h-56 w-full bg-cover"
                              style="background-image: url('${p.image_url}');">
                         </div>
@@ -125,13 +137,7 @@
             });
         }
 
-        // Xử lý khi bấm Buy Now
-        if (buyNowBtn) {
-            buyNowBtn.addEventListener("click", function () {
-                const quantity = document.getElementById("quantity")?.textContent.trim() || 1;
-                window.location.href = `${pageContext.request.contextPath}/addCart?productId=${product.id}&quantity=`+quantity;
-            });
-        }
+
         if (addToCartBtn) {
             addToCartBtn.addEventListener("click", function () {
                 const quantity = document.getElementById("quantity")?.textContent.trim() || 1;

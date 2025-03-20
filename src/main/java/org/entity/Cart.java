@@ -5,6 +5,7 @@ public class Cart {
     private Account account;
     private int quantity;
     private Status status;
+    private Order order;
     public Product getProduct() {
         return product;
     }

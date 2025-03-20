@@ -37,59 +37,63 @@
     <!-- Receiver Information Form -->
     <div class="bg-white p-4 rounded-lg shadow-md mb-6">
         <h2 class="text-xl font-semibold mb-4">Receiver Information</h2>
-        <form>
+        <form id="order" method="post" action="confirmOrder">
+
+
+            <div class="mb-4">
+                <label class="block text-gray-700">Province</label>
+            <select id="city" name="province" class="w-full p-2 border border-gray-300 rounded mt-1" onchange="updateProvince(this.value)">
+                <option value="">Select a Province</option>
+                <c:forEach var="province" items="${provinces}">
+
+                    <option value="${province.code}" ${province.code == param.province ? 'selected' : ''}>
+                            ${province.name}
+                    </option>
+                </c:forEach>
+            </select>
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-gray-700">District</label>
+                <select id="district" name="district" class="w-full p-2 border border-gray-300 rounded mt-1">
+                    <option value="">Select a District</option>
+                    <c:forEach var="dis" items="${districts}">
+                        <c:if test="${dis.province_code == param.province && param.province != null}">
+                        <option value="${dis.code}" ${dis.code == param.district ? 'selected' : ''}>${dis.name}</option>
+                        </c:if>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Ward</label>
+                <select id="ward" name="ward" class="w-full p-2 border border-gray-300 rounded mt-1">
+                    <option value="">Select a Ward</option>
+                    <c:forEach var="ward" items="${wards}">
+                        <c:if test="${ward.district_code == param.district && param.district != null}">
+                            <option value="${ward.code}">${ward.name}</option>
+                        </c:if>
+                    </c:forEach>
+                </select>
+            </div>
             <div class="mb-4">
                 <label class="block text-gray-700">Name</label>
-                <input type="text" class="w-full p-2 border border-gray-300 rounded mt-1"/>
+                <input type="text" name="name" class="w-full p-2 border border-gray-300 rounded mt-1"/>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700">Phone</label>
-                <input type="text" class="w-full p-2 border border-gray-300 rounded mt-1"/>
+                <input type="text" name="phone" class="w-full p-2 border border-gray-300 rounded mt-1"/>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700">Email</label>
-                <input type="email" class="w-full p-2 border border-gray-300 rounded mt-1"/>
+                <input type="email" name="email" class="w-full p-2 border border-gray-300 rounded mt-1"/>
+            </div>
+            <div class="mb-4 p-2 bg-gray-100 rounded-lg">
+                <p class="font-semibold">Subtotal: <span id="subtotal">$${totalPrice}</span></p>
+                <p class="font-semibold">Shipping Fee: <span id="shipping-fee">$${param.fee}</span></p>
+                <p class="text-lg font-bold">Total: <span id="final-total">$${param.fee+totalPrice}</span></p>
             </div>
 
-
-<%--            <div class="mb-4">--%>
-<%--                <label class="block text-gray-700">City/Province</label>--%>
-<%--                <select id="city" class="w-full p-2 border border-gray-300 rounded mt-1">--%>
-<%--                    <option value="">Select a Province</option>--%>
-<%--                    <c:forEach var="province" items="${provinces}">--%>
-<%--                        <option value="${province.code}">${province.name}</option>--%>
-<%--                    </c:forEach>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-
-
-<%--            <div class="mb-4">--%>
-<%--                <label class="block text-gray-700">District</label>--%>
-<%--                <select id="district" class="w-full p-2 border border-gray-300 rounded mt-1">--%>
-<%--                    <option value="">Select a District</option>--%>
-<%--                    <c:forEach var="province" items="${districts}">--%>
-<%--                        <option value="${province.code}">${province.name}</option>--%>
-<%--                    </c:forEach>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-<%--            <div class="mb-4">--%>
-<%--                <label class="block text-gray-700">Ward</label>--%>
-<%--                <select id="ward" class="w-full p-2 border border-gray-300 rounded mt-1">--%>
-<%--                    <option value="">Select a Ward</option>--%>
-<%--                    <c:forEach var="province" items="${wards}">--%>
-<%--                        <option value="${province.code}">${province.name}</option>--%>
-<%--                    </c:forEach>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-
-        </form>
-    </div>
-
-
-    <!-- Payment Method Selection -->
-    <div class="bg-white p-4 rounded-lg shadow-md mb-6">
-        <h2 class="text-xl font-semibold mb-4">Payment Method</h2>
-        <form>
             <label class="inline-flex items-center mb-2">
                 <input type="radio" name="payment" value="online" class="form-radio text-indigo-600"/>
                 <span class="ml-2">Online Payment</span>
@@ -107,12 +111,74 @@
         </form>
     </div>
 
+
+
     <!-- Checkout Button -->
     <div class="text-right">
-        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700">
-            Checkout
+        <button id="submit-button" class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700">
+            Submit
         </button>
     </div>
 </div>
+<script>
+    document.getElementById("city").addEventListener("change", function () {
+        let selectedProvince = this.value;
+        let url = new URL(window.location.href);
+        url.searchParams.set("province", selectedProvince);
+        url.searchParams.delete("district");
+        window.location.href = url.toString();
+    });
+
+    document.getElementById("district").addEventListener("change", function () {
+        let selectedDistrict = this.value;
+        let url = new URL(window.location.href);
+        let currentProvince = url.searchParams.get("province");
+
+        if (!currentProvince) {
+            alert("Vui lòng chọn tỉnh trước!");
+            return;
+        }
+        let shippingFee = currentProvince * 1000 + selectedDistrict * 500;
+        url.searchParams.set("district", selectedDistrict);
+        url.searchParams.set("fee", (shippingFee / 23000).toFixed(2));
+
+        window.location.href = url.toString();
+    });
+    document.getElementById("submit-button").addEventListener("click", function (event) {
+        let nameInput = document.querySelector('input[type="text"]');
+        let phoneInput = document.querySelectorAll('input[type="text"]')[1];
+        let emailInput = document.querySelector('input[type="email"]');
+        let provinceSelect = document.getElementById("city");
+        let districtSelect = document.getElementById("district");
+        let wardSelect = document.getElementById("ward");
+
+        if (!nameInput || !phoneInput || !emailInput || !provinceSelect || !districtSelect || !wardSelect) {
+            alert("Error: Some form elements are missing.");
+            return;
+        }
+
+        let name = nameInput.value.trim();
+        let phone = phoneInput.value.trim();
+        let email = emailInput.value.trim();
+        let province = provinceSelect.value;
+        let district = districtSelect.value;
+        let ward = wardSelect.value;
+
+        let errorMessages = [];
+
+        if (!name) errorMessages.push("Name cannot be empty.");
+        if (!phone) errorMessages.push("Phone cannot be empty.");
+        if (!email) errorMessages.push("Email cannot be empty.");
+        if (!province) errorMessages.push("Please select a province.");
+        if (!district) errorMessages.push("Please select a district.");
+        if (!ward) errorMessages.push("Please select a ward.");
+
+        if (errorMessages.length > 0) {
+            alert(errorMessages.join("\n"));
+        } else {
+            document.getElementById("order").submit(); // Submit form nếu hợp lệ
+        }
+    });
+</script>
 </body>
 </html>
